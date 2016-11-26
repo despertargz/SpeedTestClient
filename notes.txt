@@ -1,0 +1,13 @@
+default receive buffer is 65k.
+socket.ReceiveBufferSize = packetSize;
+
+seeing speed increases in >= 256k buffers for a 40mb file
+
+11/25/2016 8:01:23 PM, Result: COMPLETED, File: 40 MB, Packet: 1024 KB, Speed: 24.2 Mb/s 
+11/25/2016 8:01:37 PM, Result: COMPLETED, File: 40 MB, Packet: 1024 KB, Speed: 22.4 Mb/s 
+11/25/2016 8:01:51 PM, Result: COMPLETED, File: 40 MB, Packet: 512 KB, Speed: 23.0 Mb/s 
+11/25/2016 8:02:10 PM, Result: COMPLETED, File: 40 MB, Packet: 512 KB, Speed: 17.2 Mb/s 
+11/25/2016 8:02:22 PM, Result: COMPLETED, File: 40 MB, Packet: 256 KB, Speed: 25.2 Mb/s 
+11/25/2016 8:02:38 PM, Result: COMPLETED, File: 40 MB, Packet: 256 KB, Speed: 21.3 Mb/s 
+11/25/2016 8:03:03 PM, Result: COMPLETED, File: 40 MB, Packet: 128 KB, Speed: 12.5 Mb/s 
+11/25/2016 8:03:26 PM, Result: COMPLETED, File: 40 MB, Packet: 128 KB, Speed: 13.9 Mb/s 

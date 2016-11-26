@@ -15,25 +15,26 @@ namespace SpeedTest
         {
             int kb = 1024;
             int mb = 1024 * 1024;
-            // int packetSize = 1024 * 8;
-
-            //test(kb * 1);
-            //test(kb * 2);
-            //test(kb * 4);
-            //test(kb * 8);
-            //test(kb * 16);
 
             int fileSize = mb * 40;
-            test(kb * 256, mb * 40);
-            test(kb * 256, mb * 40);
-            test(kb * 128, mb * 40);
-            test(kb * 128, mb * 40);
-            test(kb * 64, mb * 40);
-            test(kb * 64, mb * 40);
-            //test(kb * 32, mb * 40);
-            //test(kb * 16, mb * 40);
-            //test(kb * 8, mb * 40);
 
+            int[] packetSizes = new int[]
+            {
+                4096,
+                4096,
+                2048,
+                2048,
+                1024,
+                1024,
+                512,
+                512,
+                
+            };
+
+            foreach (int packetSize in packetSizes)
+            {
+                test(packetSize * kb, fileSize);
+            }
 
             Console.WriteLine("!");
             Console.ReadLine();
@@ -44,14 +45,13 @@ namespace SpeedTest
         {
             byte[] buffer = new byte[packetSize];
             Socket socket = new Socket(SocketType.Stream, ProtocolType.Tcp);
-            Console.WriteLine("Default: " + socket.ReceiveBufferSize);
 
             socket.ReceiveBufferSize = packetSize;
-            //socket.ReceiveTimeout = 5000;
-            socket.ReceiveTimeout = 15000;
-            socket.Connect("vps.sonyar.info", 1337);
+            socket.ReceiveTimeout = 60000;
 
-            Console.WriteLine("Set: " + socket.ReceiveBufferSize);
+            // 15sec did not time out direct to modem
+            //socket.ReceiveTimeout = 15000;
+            socket.Connect("vps.sonyar.info", 1337);
 
             int totalBytes = 0;
             var w = Stopwatch.StartNew();
